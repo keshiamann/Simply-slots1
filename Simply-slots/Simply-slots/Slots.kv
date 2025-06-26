@@ -1,0 +1,39 @@
+<LoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+        Label: text: "🎰 Casino Login"
+        TextInput: id: username; hint_text: "Username"
+        TextInput: id: password; hint_text: "Password"; password: True
+        Label: id: status; text: ""
+        Button: text: "Login as Admin"; on_release: root.login()
+        Button: text: "Play as Guest"; on_release: root.play()
+
+<SlotScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+        Label: id: user; text: ""
+        Label: id: reels; text: "🍒 🍋 🔔"
+        Label: id: win; text: "Win: $0"
+        Label: id: balance; text: "Balance: $100"
+        Button: text: "Spin"; on_release: root.spin()
+        Button: text: "Back"; on_release: app.root.current = 'login'
+
+<AdminScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+        Label: text: "Admin Panel"
+        Label: id: redeem_list; text: "No redemptions yet"
+        BoxLayout:
+            spacing: 5
+            TextInput: id: redeem_user; hint_text: "Username"
+            TextInput: id: redeem_amt; hint_text: "Amount"
+        Label: id: redeem_status; text: ""
+        Button: text: "Redeem"; on_release: root.redeem()
+        Button: text: "Refresh"; on_release: root.load_redeems()
+        Button: text: "Back"; on_release: app.root.current = 'login'
